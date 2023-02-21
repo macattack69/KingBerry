@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.948088, 0.640867, 0.972653 )
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CylinderMesh" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 3.5, 0, 0, 0, 0.1, 0, 0, 0, 3.5, -0.00503111, 0.612388, 0.000144005 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+transform = Transform( 3.5, 0, 0, 0, 0.1, 0, 0, 0, 3.5, -0.00503111, 0.612388, 0.000144005 )
+mesh = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.731294, 0.682062, 0, -0.682062, 0.731294, 0, 4.72405, 6.92716 )
+light_color = Color( 0.988235, 0.890196, 0.541176, 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.0413351, 0.999145, 0, -0.999145, 0.0413351, 0, 5.32489, 0 )
+fov = 38.8817
+
+[node name="test2" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="test2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26665, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="test2"]
+transform = Transform( 0.351695, 0.582899, -0.732489, 0, 0.782478, 0.622679, 0.936115, -0.218993, 0.275193, 0, 0.58031, 0 )
+mesh = SubResource( 4 )

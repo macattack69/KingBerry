@@ -49,3 +49,8 @@ func _physics_process(_delta):
 #it then uses a combination of the speed variable from earlier, and the built-in
 #move_and_slide() function to manipulate the parent nodes movement
 #pretttty neaaat right?
+
+#interesting note now that I made the movement function above work
+#basically, the "move_..." strings are input mapping actions dictated by
+#keys, in that same mentioned input mapping menu under project settings
+#thanks debugga! I do not use the hard R

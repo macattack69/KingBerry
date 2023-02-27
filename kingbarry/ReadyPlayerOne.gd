@@ -27,7 +27,7 @@ func _input(event):
 		$Camera.rotate_y(deg2rad(-event.relative.x))
 #this rotates the camera on mouse movement. Relative x and y above
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction = Vector3()
 	if Input.is_action_pressed("move_forward"):
 		direction += -transform.basis.z

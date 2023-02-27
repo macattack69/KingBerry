@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.948088, 0.640867, 0.972653 )
@@ -37,3 +39,5 @@ shape = SubResource( 3 )
 [node name="MeshInstance" type="MeshInstance" parent="test2"]
 transform = Transform( 0.351695, 0.582899, -0.732489, 0, 0.782478, 0.622679, 0.936115, -0.218993, 0.275193, -0.000187397, 0.576791, -0.00145197 )
 mesh = SubResource( 4 )
+
+[node name="KinematicBody" parent="." instance=ExtResource( 1 )]

@@ -10,22 +10,27 @@ extends KinematicBody
 #and use the input to utilize said physics.
 
 export var speed = 10
-#clearly this goes brrrrrr
-#its our only variable for now, and like most languages variables
-#are preferrably specified before functions because multiple functions
-#typically call the same variables and you might get some undefined errors if
-#you structured it differently.
+export var mouse_sens = 0.5
+
+onready var camera = $Camera
 
 func _ready():
 	set_process_input(true)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 #this turns listening for input on without this the kinematicBody player wouldnt take input
 #this happens when the parent node is first placed in the scene
+#hides mouse, locks to application
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_x(deg2rad(-event.relative.y))
-		$Camera.rotate_y(deg2rad(-event.relative.x))
+		rotation_degrees.y -= mouse_sens * event.relative.x
+		camera.rotation_degrees.x -= mouse_sens * event.relative.y
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 #this rotates the camera on mouse movement. Relative x and y above
+
+func _process(_delta):
+	if Input.is_action_just_pressed("exit"):
+		get_tree().quit()
 
 func _physics_process(_delta):
 	var direction = Vector3()

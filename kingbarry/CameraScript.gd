@@ -2,19 +2,22 @@ extends Camera
 
 var sensitivity = Vector2(0.3, 0.3)
 var speed = 20.0
+export var mouse_sens = 0.5
+
+onready var camera = $Camera
 
 func _ready():
 	set_process_input(true)
-
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	# Set the camera's initial position and rotation
 	set_translation(Vector3(0, 1.5, 0))
 	set_rotation(Vector3(deg2rad(10), 0, 0))
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_x(deg2rad(-event.relative.y * sensitivity.y))
-		rotate_y(deg2rad(-event.relative.x * sensitivity.x))
-		clamp_rotation()
+		rotation_degrees.y -= mouse_sens * event.relative.x
+		camera.rotation_degrees.x -= mouse_sens * event.relative.y
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 
 func clamp_rotation():
 	var limit = deg2rad(80)
@@ -30,6 +33,8 @@ func process(delta):
 	direction += transform.basis.x * Input.get_action_strength("move_right")
 	direction.y = 0
 	direction = direction.normalized()
+	if Input.is_action_just_pressed("exit"):
+		get_tree().quit()
 
 	if direction.length() > 0:
 		translate(direction * speed * delta)

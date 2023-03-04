@@ -19,11 +19,12 @@ func _input(event):
 		camera.rotation_degrees.x -= mouse_sens * event.relative.y
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 
-func clamp_rotation():
-	var limit = deg2rad(80)
-	var x_rotation = get_rotation().x
-	x_rotation = clamp(x_rotation, -limit, limit)
-	set_rotation(Vector3(x_rotation, get_rotation().y, 0))
+#dont need this, godot has clamp already
+##func clamp_rotation():
+	#var limit = deg2rad(80)
+	#var x_rotation = get_rotation().x
+	#x_rotation = clamp(x_rotation, -limit, limit)
+	#set_rotation(Vector3(x_rotation, get_rotation().y, 0))
 
 func process(delta):
 	var direction = Vector3()
@@ -33,6 +34,8 @@ func process(delta):
 	direction += transform.basis.x * Input.get_action_strength("move_right")
 	direction.y = 0
 	direction = direction.normalized()
+	
+	
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
 

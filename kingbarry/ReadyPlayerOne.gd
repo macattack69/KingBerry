@@ -9,10 +9,17 @@ extends KinematicBody
 #to the physics engine for their physics. We have to define the physics for it here,
 #and use the input to utilize said physics.
 
+#beginning work on gravity
+const GRAVITY = Vector3(0,10,0)
+const MASS = 1
+var VELOCITY = Vector3()
+var is_on_floor = false
+
 export var speed = 10
 export var mouse_sens = 0.5
+export var jump_speed = 10
 
-onready var camera = $Camera
+onready var camera = get_node("Camera")
 
 func _ready():
 	set_process_input(true)
@@ -27,12 +34,15 @@ func _input(event):
 		camera.rotation_degrees.x -= mouse_sens * event.relative.y
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 #this rotates the camera on mouse movement. Relative x and y above
+	if event.is_action_pressed("jump") and is_on_floor:
+		VELOCITY.y = jump_speed
+		is_on_floor = false
 
 func _process(_delta):
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var direction = Vector3()
 	if Input.is_action_pressed("move_forward"):
 		direction += -transform.basis.z
@@ -45,6 +55,14 @@ func _physics_process(_delta):
 	direction = direction.normalized()
 	direction *= speed
 	move_and_slide(direction)
+	# apply gravity
+	VELOCITY += GRAVITY * delta
+	VELOCITY = move_and_slide(VELOCITY, Vector3.UP)
+	move_and_slide(direction + VELOCITY)
+	var snap = Vector3(0, -1, 0) # snap to the floor
+	var floor_normal = Vector3()
+	var is_on_floor_new = move_and_slide(VELOCITY + snap, Vector3(0, 1, 0), false, 4, 0.785398, true)
+
 #this is the big one, like the last function takes mouse input (only movement for now)
 #this function takes keyboard input (or gamepad input idk yet)
 #this is pretty cool, basically its taking a direction variable,
@@ -59,3 +77,6 @@ func _physics_process(_delta):
 #basically, the "move_..." strings are input mapping actions dictated by
 #keys, in that same mentioned input mapping menu under project settings
 #thanks debugga! I do not use the hard R
+
+
+

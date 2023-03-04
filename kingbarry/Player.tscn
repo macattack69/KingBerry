@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://readyplayerone.gd" type="Script" id=1]
 [ext_resource path="res://Assets/knowingthisaintreal.tres" type="Material" id=2]
+[ext_resource path="res://CameraScript.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -25,3 +26,4 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0299714, 0.155595, -1.49505 )
 current = true
 fov = 116.085
+script = ExtResource( 3 )

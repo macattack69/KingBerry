@@ -60,3 +60,35 @@ light_color = Color( 0.988235, 0.890196, 0.541176, 1 )
 environment = SubResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+
+[node name="test2" type="StaticBody" parent="."]
+transform = Transform( 0.727557, -6.86047, 0, 0.686047, 7.27557, 0, 0, 0, 1, 5.88822, -1.46477, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="test2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26665, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="test2"]
+transform = Transform( 0.351695, 0.582899, -0.732489, 0, 0.782478, 0.622679, 0.936115, -0.218993, 0.275193, -0.000187397, 0.576791, -0.00145197 )
+mesh = SubResource( 4 )
+
+[node name="test3" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="test3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26665, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="test3"]
+transform = Transform( 0.351695, 0.582899, -0.732489, 0, 0.782478, 0.622679, 0.936115, -0.218993, 0.275193, -0.000187397, 0.576791, -0.00145197 )
+mesh = SubResource( 4 )
+
+[node name="test4" type="StaticBody" parent="."]
+transform = Transform( 0.727557, -6.86047, 0, 0.686047, 7.27557, 0, 0, 0, 1, 2.37483, -4.77771, 3.69772 )
+
+[node name="CollisionShape" type="CollisionShape" parent="test4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26665, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="test4"]
+transform = Transform( 0.351695, 0.582899, -0.732489, 0, 0.782478, 0.622679, 0.936115, -0.218993, 0.275193, -0.000187397, 0.576791, -0.00145197 )
+mesh = SubResource( 4 )

@@ -22,9 +22,9 @@ func _input(event):
 		camera.rotation_degrees.x -= mouse_sens * event.relative.y
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 #this rotates the camera on mouse movement. Relative x and y above
-	#if event.is_action_pressed("jump") and is_on_floor:
-		#VELOCITY.y = jump_speed
-		#is_on_floor = false
+	if event.is_action_pressed("jump") and is_on_floor:
+		VELOCITY.y = jump_speed
+		is_on_floor = false
 
 func _process(_delta):
 	if Input.is_action_just_pressed("exit"):
@@ -50,4 +50,4 @@ func _physics_process(delta):
 	var snap = Vector3(0, -1, 0) # snap to the floor
 	var floor_normal = Vector3()
 	var is_on_floor_new = move_and_slide(VELOCITY + snap, Vector3(0, 1, 0), false, 4, 0.785398, true)
-
+	is_on_floor = is_on_floor_new

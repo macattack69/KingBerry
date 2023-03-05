@@ -4,7 +4,7 @@ var sensitivity = Vector2(0.3, 0.3)
 var speed = 20.0
 export var mouse_sens = 0.5
 
-onready var camera = Camera
+onready var camera = $Camera
 
 func _ready():
 	set_process_input(true)
@@ -16,7 +16,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotation.y -= mouse_sens * event.relative.x
-		camera.rotation.x -= mouse_sens * event.relative.y
+		rotation.x -= mouse_sens * event.relative.y
 		camera.rotation.x = clamp(camera.rotation.x, -90, 90)
 #func _input(event):
 	#if event is InputEventMouseMotion:

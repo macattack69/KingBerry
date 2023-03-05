@@ -38,4 +38,4 @@ mesh = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 0.731294, 0.682062, 0, -0.682062, 0.731294, 0, 4.72405, 6.92716 )
 light_color = Color( 0.988235, 0.890196, 0.541176, 1 )
 
-[node name="KinematicBody" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." instance=ExtResource( 1 )]

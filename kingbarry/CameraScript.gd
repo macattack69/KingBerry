@@ -4,7 +4,7 @@ var sensitivity = Vector2(0.3, 0.3)
 var speed = 20.0
 export var mouse_sens = 0.5
 
-onready var camera = get_node("Camera")
+onready var camera = Camera
 
 func _ready():
 	set_process_input(true)
@@ -25,11 +25,11 @@ func _input(event):
 		#camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 
 #dont need this, godot has clamp already
-##func clamp_rotation():
-	#var limit = deg2rad(80)
-	#var x_rotation = get_rotation().x
-	#x_rotation = clamp(x_rotation, -limit, limit)
-	#set_rotation(Vector3(x_rotation, get_rotation().y, 0))
+func clamp_rotation():
+	var limit = deg2rad(80)
+	var x_rotation = get_rotation().x
+	x_rotation = clamp(x_rotation, -limit, limit)
+	set_rotation(Vector3(x_rotation, get_rotation().y, 0))
 
 func process(delta):
 	var direction = Vector3()

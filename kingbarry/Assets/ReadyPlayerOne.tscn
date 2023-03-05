@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/knowingthisaintreal.tres" type="Material" id=1]
-[ext_resource path="res://Main.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Raw Assets/knowingthisaintreal.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Environment/Main.tscn" type="PackedScene" id=2]
+
 
 [sub_resource type="CapsuleMesh" id=1]
 

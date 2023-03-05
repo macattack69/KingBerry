@@ -28,11 +28,11 @@ func _ready():
 #this happens when the parent node is first placed in the scene
 #hides mouse, locks to application
 
-#func _input(event):
-	#if event is InputEventMouseMotion:
-		#rotation_degrees.y -= mouse_sens * event.relative.x
-		#camera.rotation_degrees.x -= mouse_sens * event.relative.y
-		#camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
+func _input(event):
+	if event is InputEventMouseMotion:
+		rotation_degrees.y -= mouse_sens * event.relative.x
+		camera.rotation_degrees.x -= mouse_sens * event.relative.y
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 #this rotates the camera on mouse movement. Relative x and y above
 	#if event.is_action_pressed("jump") and is_on_floor:
 		#VELOCITY.y = jump_speed

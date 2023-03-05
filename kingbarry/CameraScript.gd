@@ -13,16 +13,12 @@ func _ready():
 	set_translation(Vector3(0, 1.5, 0))
 	set_rotation(Vector3(deg2rad(10), 0, 0))
 
+
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotation.y -= mouse_sens * event.relative.x
-		rotation.x -= mouse_sens * event.relative.y
-		camera.rotation.x = clamp(camera.rotation.x, -90, 90)
-#func _input(event):
-	#if event is InputEventMouseMotion:
-		#rotation_degrees.y -= mouse_sens * event.relative.x
-		#camera.rotation_degrees.x -= mouse_sens * event.relative.y
-		#camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
+		rotation_degrees.y -= mouse_sens * event.relative.x
+		camera.rotation_degrees.x -= mouse_sens * event.relative.y
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 
 #dont need this, godot has clamp already
 func clamp_rotation():

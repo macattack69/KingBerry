@@ -3,14 +3,22 @@ extends KinematicBody
 #beginning work on gravity
 const GRAVITY = Vector3(0,10,0)
 const MASS = 1
-var VELOCITY = Vector3()
+var velocity = Vector3()
 var is_on_floor = false
+var pressed_jump = false
+var body_to_move: KinematicBody = null
+var snap_vec: Vector3
+
+signal movement_info
 
 export var speed = 10
 export var mouse_sens = 0.5
-export var jump_speed = 10
+export var jump_force = 10
 
 onready var camera = $Camera
+
+func init(_body_to_move: KinematicBody):
+	body_to_move = _body_to_move
 
 func _ready():
 	set_process_input(true)
@@ -43,11 +51,29 @@ func _physics_process(delta):
 	direction = direction.normalized()
 	direction *= speed
 	move_and_slide(direction)
-	# apply gravity
-	VELOCITY -= GRAVITY * delta
-	VELOCITY = move_and_slide(VELOCITY, Vector3.UP)
-	move_and_slide(direction + VELOCITY)
-	var snap = Vector3(0, -1, 0) # snap to the floor
-	var floor_normal = Vector3()
-	var is_on_floor_new = move_and_slide(VELOCITY + snap, Vector3(0, 1, 0), false, 4, 0.785398, true)
-
+	if Input.is_action_just_pressed("jump"):
+		jump()
+	
+	var grounded = body_to_move.is_on_floor()
+	if grounded:
+		velocity.y = -0.01
+	if grounded and pressed_jump:
+		velocity.y = jump_force
+		snap_vec = Vector3.ZERO
+	else:
+		snap_vec = Vector3.DOWN
+	pressed_jump = false
+	emit_signal("movement_info", velocity, grounded)
+	
+func jump():
+	pressed_jump = true
+	
+	# apply 
+	#OLD JUMP CODE
+	#VELOCITY -= GRAVITY * delta
+	#VELOCITY = move_and_slide(VELOCITY, Vector3.UP)
+	#move_and_slide(direction + VELOCITY)
+	#var snap = Vector3(0, -1, 0) # snap to the floor
+	#var floor_normal = Vector3()
+	#var is_on_floor_new = move_and_slide(VELOCITY + snap, Vector3(0, 1, 0), false, 4, 0.785398, true)
+	#is_on_floor = is_on_floor_new

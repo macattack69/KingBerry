@@ -1,8 +1,0 @@
-[gd_resource type="Skin" format=2]
-
-[resource]
-resource_name = "new_gradienttexture.tres"
-bind_count = 1
-bind/0/name = ""
-bind/0/bone = -1
-bind/0/pose = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )

@@ -3,7 +3,7 @@
 [ext_resource path="res://Characters/Players/player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/CharacterMover.gd" type="Script" id=2]
 [ext_resource path="res://Characters/HealthManager.gd" type="Script" id=3]
-[ext_resource path="res://Characters/Players/WeaponManger.gd" type="Script" id=4]
+[ext_resource path="res://Characters/Players/WeaponManager.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -30,26 +30,26 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
 current = true
 
-[node name="WeaponManger" type="Spatial" parent="Camera"]
+[node name="WeaponManager" type="Spatial" parent="Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0 )
 script = ExtResource( 4 )
 
-[node name="Weapons" type="Spatial" parent="Camera/WeaponManger"]
+[node name="Weapons" type="Spatial" parent="Camera/WeaponManager"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30407, -0.212201 )
 
-[node name="Machete" type="MeshInstance" parent="Camera/WeaponManger/Weapons"]
+[node name="Machete" type="MeshInstance" parent="Camera/WeaponManager/Weapons"]
 transform = Transform( 0.122753, 0, 0, 0, 0.122753, 0, 0, 0, 0.122753, 0.482109, -0.252455, -0.396843 )
 mesh = SubResource( 2 )
 
-[node name="MachineGun" type="MeshInstance" parent="Camera/WeaponManger/Weapons"]
+[node name="MachineGun" type="MeshInstance" parent="Camera/WeaponManager/Weapons"]
 transform = Transform( 0.122753, 0, 0, 0, 0.122753, 0, 0, 0, 0.122753, 0.482109, -0.252455, -0.396843 )
 mesh = SubResource( 3 )
 
-[node name="Shotgun" type="MeshInstance" parent="Camera/WeaponManger/Weapons"]
+[node name="Shotgun" type="MeshInstance" parent="Camera/WeaponManager/Weapons"]
 transform = Transform( 0.122753, 0, 0, 0, 0.122753, 0, 0, 0, 0.122753, 0.482109, -0.252455, -0.396843 )
 mesh = SubResource( 4 )
 
-[node name="RocketLauncher" type="MeshInstance" parent="Camera/WeaponManger/Weapons"]
+[node name="RocketLauncher" type="MeshInstance" parent="Camera/WeaponManager/Weapons"]
 transform = Transform( 0.122753, 0, 0, 0, 0.122753, 0, 0, 0, 0.122753, 0.482109, -0.252455, -0.396843 )
 mesh = SubResource( 5 )
 

@@ -18,7 +18,7 @@ export var mouse_sens = 0.5
 onready var camera = $Camera
 onready var character_mover = $CharacterMover
 onready var health_manager = $HealthManager
-onready var weapon_manager = $Camera/WeaponManger
+onready var weapon_manager = $Camera/WeaponManager
 
 var dead = false
 
@@ -57,6 +57,13 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.scancode in hotkeys:
 			weapon_manager.switch_to_weapon_slot(hotkeys[event.scancode])
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == BUTTON_WHEEL_DOWN:
+			print("scroll down")
+			weapon_manager.switch_to_next_weapon()
+		if event.button_index == BUTTON_WHEEL_UP:
+			print("scroll up")
+			weapon_manager.switch_to_last_weapon()
 
 func hurt(damage, dir):
 	health_manager.hurt(damage, dir)

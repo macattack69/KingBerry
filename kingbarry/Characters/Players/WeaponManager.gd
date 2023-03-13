@@ -2,7 +2,6 @@ extends Spatial
 
 
 enum WEAPON_SLOTS{MACHETE, MACHINE_GUN, SHOTGUN, ROCKET_LAUNCHER}
-
 var slots_unlocked = {
 	WEAPON_SLOTS.MACHETE: true,
 	WEAPON_SLOTS.MACHINE_GUN: true,
@@ -18,14 +17,14 @@ func _ready():
 	pass
 
 func switch_to_next_weapon():
-	cur_slot = (cur_slot +1) % slots_unlocked.size()
+	cur_slot = (cur_slot + 1) % slots_unlocked.size()
 	if !slots_unlocked[cur_slot]:
 		switch_to_next_weapon()
 	else:
 		switch_to_weapon_slot(cur_slot)
 
 func switch_to_last_weapon():
-	cur_slot = posmod((cur_slot -1), slots_unlocked.size())
+	cur_slot = posmod((cur_slot - 1), slots_unlocked.size())
 	if !slots_unlocked[cur_slot]:
 		switch_to_last_weapon()
 	else:
@@ -37,7 +36,8 @@ func switch_to_weapon_slot(slot_ind: int):
 	if !slots_unlocked[cur_slot]:
 		return
 	disable_all_weapons()
-	cur_weapon = weapons[cur_slot]
+	cur_weapon = weapons[slot_ind]
+	print (cur_weapon.name)
 	if cur_weapon.has_method("set_active"):
 		cur_weapon.set_active()
 	else:
